@@ -1,0 +1,37 @@
+# 参考：DataSourceAutoConfiguration 中的 DataSourceProperties类
+#其中包含以下信息
+spring:
+  datasource:
+#    name: user_info
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.10.6:3306/mybatis
+    driverClassName: com.mysql.cj.jdbc.Driver
+#    sqlScriptEncoding: utf-8
+    type: com.alibaba.druid.pool.DruidDataSource
+#    添加自定义sql失效，参考：DataSourceInitializer  待解决
+#    schema:
+#      - classpath:user_tbl.sql
+    #   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#    当系统启动时，会将sql脚本执行
+#    schema:
+#      -  classpath:sql/department.sql
+#      -  classpath:sql/employee.sql
+#    springboot 2.0中，需要指定静态资源，否则无法执行脚本
+    initialization-mode: always
