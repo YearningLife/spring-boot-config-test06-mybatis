@@ -1,3 +1,6 @@
+mybatis:
+  config-location: classpath:/mybatis/mybatis-config.xml
+  mapper-locations: classpath:/mybatis/mapper/*
 # 参考：DataSourceAutoConfiguration 中的 DataSourceProperties类
 #其中包含以下信息
 spring:
@@ -35,3 +38,11 @@ spring:
 #      -  classpath:sql/employee.sql
 #    springboot 2.0中，需要指定静态资源，否则无法执行脚本
     initialization-mode: always
+#    参考JpaRepositoriesAutoConfiguration中的JpaRepository
+  jpa:
+#    启动时，创建实体类，若存在，则更新、若不存在，则创建
+    hibernate:
+      ddl-auto: update
+#      控制台展示创建sql执行语句
+    show-sql: true
+

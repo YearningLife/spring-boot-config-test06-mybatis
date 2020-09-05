@@ -9,7 +9,26 @@ public class Employee {
     private String lastName;
     private String email;
     private String gender;
+    private Integer dId;
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dId=" + dId +
+                '}';
+    }
+
+    public Integer getdId() {
+        return dId;
+    }
+
+    public void setdId(Integer dId) {
+        this.dId = dId;
+    }
 
     public Integer getId() {
         return id;

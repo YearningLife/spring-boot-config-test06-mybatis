@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Dashboard Template for Bootstrap</title>
+		<!-- Bootstrap core CSS -->
+		<link href="asserts/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="asserts/css/dashboard.css" rel="stylesheet">
+		<style type="text/css">
+			/* Chart.js */
+			
+			@-webkit-keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			@keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.chartjs-render-monitor {
+				-webkit-animation: chartjs-render-animation 0.001s;
+				animation: chartjs-render-animation 0.001s;
+			}
+		</style>
+	</head>
+
+	<body>
+	<div th:replace="components/bar :: topbar" ></div>
+		<div class="container-fluid">
+			<div class="row">
+				<div th:replace="components/bar :: #sidely(activeUrl='main.html')" ></div>
+			<!--
+			1. error属性定义位置： org.springframework.boot.web.servlet.error.DefaultErrorAttributes
+			2. error定义文件： org.springframework.boot.autoconfigure.web.servlet.error.DefaultErrorViewResolver
+			3. 当页面遇到错误时：
+				浏览器访问（有错误页面），按照以下顺序依次寻找
+					存在模板
+						3.1 存在指定错误页面：templates\error\404.html
+						3.2 存在错误区间：templates\error\4xx.html，templates\error\5xx.html
+						3.3 先在templates\路径找模板文件，如果不存在则会在静态资源文件夹下面找资源
+							 区别：templates\ 可用变量：[[${status}]]，静态资源变量不可用
+					不存在模板：
+						3.3 在上面找不到路径：采取springboot 默认页面
+				无错误页面（模拟客户端访问，返回json数据）
+
+			-->
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<h1>status:[[${status}]]</h1>
+					<h1>path:[[${path}]]</h1>
+					<h1>error:[[${error}]]</h1>
+					<h1>timestamp:[[${timestamp}]]</h1>
+				</main>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js" ></script>
+		<script type="text/javascript" src="asserts/js/popper.min.js" ></script>
+		<script type="text/javascript" src="asserts/js/bootstrap.min.js" ></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" src="asserts/js/feather.min.js" ></script>
+		<script>
+			feather.replace()
+		</script>
+
+		<!-- Graphs -->
+		<script type="text/javascript" src="asserts/js/Chart.min.js" ></script>
+		<script>
+			var ctx = document.getElementById("myChart");
+			var myChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+					datasets: [{
+						data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+						lineTension: 0,
+						backgroundColor: 'transparent',
+						borderColor: '#007bff',
+						borderWidth: 4,
+						pointBackgroundColor: '#007bff'
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: false
+							}
+						}]
+					},
+					legend: {
+						display: false,
+					}
+				}
+			});
+		</script>
+
+	</body>
+
+</html>
