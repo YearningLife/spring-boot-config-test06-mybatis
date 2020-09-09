@@ -2,8 +2,12 @@ package com.green.springboot.mapper;
 
 import com.green.springboot.bean.Department;
 import org.apache.ibatis.annotations.*;
-/*
-用来实现mapper映射文件的增删改查需求
+/**
+ *
+ * @description: TODO 用来实现mapper映射文件的增删改查需求
+ * @author: zero
+ * @date: 2020/9/9
+ * @version: 1.0
  */
 //@Mapper
 public interface DepartmentMapper {

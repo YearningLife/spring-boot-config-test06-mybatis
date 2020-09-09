@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
-/*
-使用mybatis方式访问数据库
-mybatis访问数据库的两种方式：
-    第一：注解方式
-    第二：mapper映射文件方法
+/**
+ *
+ * @description: TODO 使用mybatis方式访问数据库
+ * @function:
+ *mybatis访问数据库的两种方式：
+ *     第一：注解方式
+ *     第二：mapper映射文件方法
+ * @author: zero
+ * @date: 2020/9/9
+ * @version: 1.0
  */
 @RestController
 public class HelloController {
@@ -59,6 +64,9 @@ public class HelloController {
         System.out.println("查询企业员工信息2，，，，，"+maps.toString());
         return maps.toArray();
     }
-
+    @RequestMapping("/user/del/{id}")
+    public String delById(@PathVariable("id") Integer id){
+        return "success";
+    }
 
 }
